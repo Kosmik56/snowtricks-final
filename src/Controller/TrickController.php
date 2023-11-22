@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/trick')]
 class TrickController extends AbstractController
 {
-    #[Route('/', name: 'app_trick_index', methods: ['GET'])]
+    #[Route('/', name: 'trick_index', methods: ['GET'])]
     public function index(TrickRepository $trickRepository): Response
     {
         return $this->render('trick/index.html.twig', [
@@ -33,7 +33,7 @@ class TrickController extends AbstractController
             $entityManager->persist($trick);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_trick_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('trick/new.html.twig', [
@@ -59,7 +59,7 @@ class TrickController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_trick_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('trick/edit.html.twig', [
@@ -76,6 +76,6 @@ class TrickController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_trick_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
     }
 }

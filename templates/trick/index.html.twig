@@ -22,7 +22,9 @@
                 <td>{{ trick.description }}</td>
                 <td>
                     <a href="{{ path('app_trick_show', {'id': trick.id}) }}">show</a>
-                    <a href="{{ path('app_trick_edit', {'id': trick.id}) }}">edit</a>
+                    {% if app.user %}
+                        <a href="{{ path('app_trick_edit', {'id': trick.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -32,8 +34,9 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_trick_new') }}">Create new</a>
+    {% if app.user %}
+        <a href="{{ path('app_trick_new') }}">Create new</a>
+    {% endif %}
     <a href="{{ path('home_index') }}">home</a>
 
 {% endblock %}

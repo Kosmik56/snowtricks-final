@@ -23,6 +23,10 @@ class Comment
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private Trick $trick;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +64,18 @@ class Comment
     public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getTrick(): Trick
+    {
+        return $this->trick;
+    }
+
+    public function setTrick(Trick $trick): static
+    {
+        $this->trick = $trick;
 
         return $this;
     }

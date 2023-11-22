@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Trick;
 use App\Form\TrickType;
 use App\Repository\TrickRepository;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrickController extends AbstractController
 {
     #[Route('/', name: 'trick_index', methods: ['GET'])]
-    public function index(TrickRepository $trickRepository): Response
+    public function index(TrickRepository $trickRepository, CommentRepository $commentRepository): Response
     {
         return $this->render('trick/index.html.twig', [
             'tricks' => $trickRepository->findAll(),
+            'comments' => $commentRepository->findAll(),
         ]);
     }
 

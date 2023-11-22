@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Welcome to SnowTricks!{% endblock %}
 
 {% block body %}
 
 {% if app.user %}
 
-    <a href='{{ relative_path('/logout') }}'>logout</a>
+    <a href='{{ relative_path('logout') }}'>logout</a>
 
 {% else %}
 
-    <a href='{{ relative_path('/login') }}'>login</a>
+    <a href='{{ relative_path('login') }}'>login</a>
 
 {% endif %}
 

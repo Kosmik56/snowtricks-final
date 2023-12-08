@@ -4,14 +4,20 @@
 
 {% block body %}
 
+<header>
+
+    <a href='{{ path('trick_index') }}'> tricks </a>
+
 {% if app.user %}
 
-    <a href='{{ relative_path('logout') }}'>logout</a>
+    <a href='{{ path('logout') }}'> logout </a>
 
 {% else %}
 
-    <a href='{{ relative_path('login') }}'>login</a>
+    <a href='{{ path('login') }}'> login </a>
+    <a href='{{ relative_path('register') }}'> register </a>
 
 {% endif %}
 
+</header>
 {% endblock %}

@@ -18,6 +18,12 @@
     <a href='{{ relative_path('register') }}'> register </a>
 
 {% endif %}
+<ul>
+{% for trick in tricks %}
+    <li>{{ trick.name }}</li> 
+    <li>comments {{ trick.comments|length }}</li>    
+{% endfor %} 
+    </ul>
 
 </header>
 {% endblock %}

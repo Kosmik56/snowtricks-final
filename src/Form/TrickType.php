@@ -6,6 +6,7 @@ use App\Entity\Trick;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class TrickType extends AbstractType
 {
@@ -14,6 +15,7 @@ class TrickType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('imageFileName', FileType::class)
         ;
     }
 

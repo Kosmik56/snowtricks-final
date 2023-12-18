@@ -22,6 +22,9 @@ class Trick
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $imageFileName = null;
+
     #[ORM\OneToMany(mappedBy: 'trick', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
 
@@ -55,6 +58,18 @@ class Trick
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImageFileName(): ?string
+    {
+        return $this->imageFileName;
+    }
+
+    public function setImageFileName(string $imageFileName): static
+    {
+        $this->imageFileName = $imageFileName;
 
         return $this;
     }

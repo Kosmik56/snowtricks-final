@@ -27,3 +27,8 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 todo.md
+
+
+# Exclude uploaded files
+
+/public/uploads/

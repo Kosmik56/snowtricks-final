@@ -34,6 +34,18 @@ class TrickController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $uploadedFile = $form['imageFileName']->getData();
+            $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/tricks';
+            $newFileName =  uniqid() . '.' . $uploadedFile->guessExtension();
+
+            $uploadedFile->move(
+                $destination,
+                $newFileName
+            );
+
+            $trick->setImageFileName($newFileName);
+            
             $entityManager->persist($trick);
             $entityManager->flush();
 
@@ -78,6 +90,18 @@ class TrickController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $uploadedFile = $form['imageFileName']->getData();
+            $destination = $this->getParameter('kernel.project_dir') . '/public/uploads/tricks';
+            $newFileName =  uniqid() . '.' . $uploadedFile->guessExtension();
+
+            $uploadedFile->move(
+                $destination,
+                $newFileName
+            );
+
+            $trick->setImageFileName($newFileName);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('trick_index', [], Response::HTTP_SEE_OTHER);
